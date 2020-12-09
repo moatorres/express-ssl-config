@@ -1,0 +1,22 @@
+{
+  "name": "express-ssl-config",
+  "description": "This project was made with ❤️ by Moa Torres",
+  "version": "0.0.1",
+  "author": "Moa Torres (https://github.com/moatorres)",
+  "homepage": "https://github.com/moatorres/express-ssl-config",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moatorres/express-ssl-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moatorres/express-ssl-config/issues"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
