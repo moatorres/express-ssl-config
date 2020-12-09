@@ -88,9 +88,9 @@ https.createServer({
 
 ## Créditos
 
-[freeCodeCamp.org](https://www.freecodecamp.org/news/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec/)
-[hackernoon.com](https://hackernoon.com/set-up-ssl-in-nodejs-and-express-using-openssl-f2529eab5bb)
-[sitepoint.com](https://www.sitepoint.com/how-to-use-ssltls-with-node-js/)
+- [freeCodeCamp.org](https://www.freecodecamp.org/news/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec/) How to get HTTPS Working on your local development Environment in 5 minutes
+- [hackernoon.com](https://hackernoon.com/set-up-ssl-in-nodejs-and-express-using-openssl-f2529eab5bb) Set up SSL in NodeJs and Express using OpenSSL
+- [sitepoint.com](https://www.sitepoint.com/how-to-use-ssltls-with-node-js/) How to use SSL/TLS with NodeJS
 
 <sub>Feito com ❤️ por [Moa](https://github.com/moatorres)</sub>
 
