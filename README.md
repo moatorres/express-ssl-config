@@ -4,13 +4,14 @@ Como configurar o ambiente de desenvolvimento local com TLS/SSL em NodeJs com Ex
 
 ## Início
 
-Leia as instruções abaixo para fazer a implementação na sua máquina.
+Você precisará instalar os pacotes `Node.js`, `npm` ou `yarn` e `openssl` na sua máquina.
 
 ### 🔖 Observações
 
-Você precisará instalar o pacote `openssl` para gerar uma chave RSA a partir do Terminal:
+É preciso instalar o pacote `openssl` para gerar uma chave RSA a partir do Terminal:
 
-`brew openssl`
+`brew openssl` → usuários `macOS`
+<!-- `cask openssl` → usuários `win64x` -->
 
 ### 🗂 Instruções
 
@@ -38,13 +39,13 @@ default_md = sha256
 distinguished_name = dn
 
 [dn]
-C=BR
-ST=Pernambuco
-L=Recife
-O=MokaTecnologia
-OU=Matriz
-emailAddress=support@hellomoka.com
-CN = localhost
+C=US                                    # Country name (2 letter code)
+ST=NY                                   # State or Province name
+L=NewYork                               # Locality name
+O=CompanyName                           # Organization name
+OU=Headquarters                         # Organizational unit name
+CN = localhost                          # Common name (qualified host name)
+emailAddress=devops@example.com         # Email address
 ```
 
 **5. Crie um arquivo `v3.ext` para criar um certificado `X509 v3`**
@@ -59,11 +60,11 @@ subjectAltName = @alt_names
 DNS.1 = localhost
 ```
 
-**6. Gere uma nova chave de certificado (server.key)**
+**6. Gere uma chave para o certificado**
 
 `openssl req -new -sha256 -nodes -out server.csr -newkey rsa:2048 -keyout server.key -config <( cat server.csr.cnf )`
 
-**7. Gere um novo certificado a partir da chave criada no passo anterior (server.crt)**
+**7. Gere o certificado `(server.crt)` usando a chave criada no passo anterior `(server.key)`**
 
 `openssl x509 -req -in server.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out server.crt -days 500 -sha256 -extfile v3.ext`
 
@@ -75,16 +76,37 @@ const https = require('https')
 const fs = require('fs')
 
 app.get('/', (req, res) => {
-    res.send('Hello Moka')
+    res.send('Hello World')
 });
 
 https.createServer({
     key: fs.readFileSync('./private.key'),
     cert: fs.readFileSync('./certificate.crt'),
-    passphrase: 'senha123'
+    passphrase: 'super-secure-password' // --> process.env.CRT_PASSPHRASE
 }, app)
 .listen(3000)
 ```
+
+**9. Inicialize o servidor**
+
+Nodejs → `node index.js`
+Npm → `npm run start`
+Yarn → `yarn start`
+
+**10. Teste sua conexão**
+
+`curl -Ik https://localhost:3000/`
+```sh
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 11
+ETag: W/"b-Ck1VqNd45QIvq3AZd8XYQLvEhtA"
+Date: Tue, 23 Mar 2021 14:54:06 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5`
+```
+
 
 ## Créditos
 
@@ -92,5 +114,4 @@ https.createServer({
 - [hackernoon.com](https://hackernoon.com/set-up-ssl-in-nodejs-and-express-using-openssl-f2529eab5bb) Set up SSL in NodeJs and Express using OpenSSL
 - [sitepoint.com](https://www.sitepoint.com/how-to-use-ssltls-with-node-js/) How to use SSL/TLS with NodeJS
 
-<sub>Feito com ❤️ por [Moa](https://github.com/moatorres)</sub>
-
+<sub><sup>Escrito por [Moa](https://github.com/moatorres) — Powered by ☕️</sup></sub>

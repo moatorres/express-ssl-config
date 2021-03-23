@@ -1,0 +1,8 @@
+node_modules/
+server.crt
+server.key
+package-lock.json
+rootCA.key
+rootCA.pem
+rootCA.srl
+server.csr

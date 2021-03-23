@@ -1,0 +1,14 @@
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+distinguished_name = dn
+
+[dn]
+C=US                                    # Country name (2 letter code)
+ST=NY                                   # State or Province name
+L=NewYork                               # Locality name
+O=CompanyName                           # Organization name
+OU=Headquarters                         # Organizational unit name
+CN = localhost                          # Common name (qualified host name)
+emailAddress=devops@example.com         # Email address

@@ -3,16 +3,15 @@ const https = require('https')
 const fs = require('fs')
 
 app.get('/', (req, res) => {
-  res.send('Hello Moka')
+  res.send('Hello World')
 })
 
+const httpsConfig = {
+  key: fs.readFileSync('./server.key'),
+  cert: fs.readFileSync('./server.crt'),
+  passphrase: 'test123',
+}
+
 https
-  .createServer(
-    {
-      key: fs.readFileSync('./private.key'),
-      cert: fs.readFileSync('./certificate.crt'),
-      passphrase: 'test123',
-    },
-    app
-  )
-  .listen(3000, () => console.log('HTTPS Server Running 🎉'))
+  .createServer(httpsConfig, app)
+  .listen(3000, () => console.log('Self-signed HTTPS Connection Running 🎉'))
