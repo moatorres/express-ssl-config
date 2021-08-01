@@ -114,4 +114,4 @@ Keep-Alive: timeout=5`
 - [hackernoon.com](https://hackernoon.com/set-up-ssl-in-nodejs-and-express-using-openssl-f2529eab5bb) Set up SSL in NodeJs and Express using OpenSSL
 - [sitepoint.com](https://www.sitepoint.com/how-to-use-ssltls-with-node-js/) How to use SSL/TLS with NodeJS
 
-<sub><sup>Escrito por [Moa](https://github.com/moatorres) — Powered by ☕️</sup></sub>
+<sub>Escrito por [Moa Torres](https://github.com/moatorres) — Powered by ☕️</sub>
